@@ -1,4 +1,4 @@
-var myBtn = document.getElementById("Button");
+var myBtn = document.getElementById("button");
     
 myBtn.addEventListener("click", thisFunction);
 
@@ -8,18 +8,27 @@ function thisFunction () {
             let notCompleteList = document.getElementById("notComplete");
             let completeList = document.getElementById("Complete");
             let isComplete = false;
-            node.append(myText)
-            node.append(<button>Remove</button>)
-            node.append(<button>Move</button>);
+
+            let btnRemove = document.createElement("button")
+            btnRemove.className = "btn-Remove button"
+            btnRemove.append("Remove")
+            let btnMove = document.createElement("button")
+            btnMove.className = "btn-Move button"
+            btnMove.append("Move")
+            
+            node.append(myText + ' ')
+            node.append(btnRemove)
+            node.append(' ')
+            node.append(btnMove);
             notCompleteList.appendChild(node);
 
 
-            let btnRemove = node.children[1];
+            btnRemove = node.children[0];
             btnRemove.addEventListener('click', function (event) {
-                node.remove();
+                node.remove()
             });
-
-            let btnMove = node.children[2];
+            
+            btnMove = node.children[1];
             btnMove.addEventListener('click', function (event) {
                 if(isComplete){
                   notCompleteList.append(node);
